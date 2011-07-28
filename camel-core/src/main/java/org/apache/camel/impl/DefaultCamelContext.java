@@ -83,34 +83,7 @@ import org.apache.camel.processor.interceptor.Delayer;
 import org.apache.camel.processor.interceptor.HandleFault;
 import org.apache.camel.processor.interceptor.StreamCaching;
 import org.apache.camel.processor.interceptor.Tracer;
-import org.apache.camel.spi.CamelContextNameStrategy;
-import org.apache.camel.spi.ClassResolver;
-import org.apache.camel.spi.ComponentResolver;
-import org.apache.camel.spi.DataFormat;
-import org.apache.camel.spi.DataFormatResolver;
-import org.apache.camel.spi.Debugger;
-import org.apache.camel.spi.EndpointStrategy;
-import org.apache.camel.spi.EventNotifier;
-import org.apache.camel.spi.ExecutorServiceStrategy;
-import org.apache.camel.spi.FactoryFinder;
-import org.apache.camel.spi.FactoryFinderResolver;
-import org.apache.camel.spi.InflightRepository;
-import org.apache.camel.spi.Injector;
-import org.apache.camel.spi.InterceptStrategy;
-import org.apache.camel.spi.Language;
-import org.apache.camel.spi.LanguageResolver;
-import org.apache.camel.spi.LifecycleStrategy;
-import org.apache.camel.spi.ManagementStrategy;
-import org.apache.camel.spi.NodeIdFactory;
-import org.apache.camel.spi.PackageScanClassResolver;
-import org.apache.camel.spi.ProcessorFactory;
-import org.apache.camel.spi.Registry;
-import org.apache.camel.spi.RouteContext;
-import org.apache.camel.spi.RouteStartupOrder;
-import org.apache.camel.spi.ServicePool;
-import org.apache.camel.spi.ShutdownStrategy;
-import org.apache.camel.spi.TypeConverterRegistry;
-import org.apache.camel.spi.UuidGenerator;
+import org.apache.camel.spi.*;
 import org.apache.camel.util.CamelContextHelper;
 import org.apache.camel.util.CastUtils;
 import org.apache.camel.util.EndpointHelper;
@@ -212,6 +185,8 @@ public class DefaultCamelContext extends ServiceSupport implements CamelContext,
         } else {
             packageScanClassResolver = new DefaultPackageScanClassResolver();
         }
+
+        Container.Instance.manage(this);
     }
 
     /**
